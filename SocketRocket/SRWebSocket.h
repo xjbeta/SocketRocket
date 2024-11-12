@@ -341,7 +341,7 @@ extern NSString *const SRHTTPResponseErrorKey;
  @param webSocket An instance of `SRWebSocket` that received a message.
  @param message   Received message. Either a `String` or `NSData`.
  */
-- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message __attribute__((swift_attr("@MainActor")));
 
 /**
  Called when a frame was received from a web socket.
@@ -349,7 +349,7 @@ extern NSString *const SRHTTPResponseErrorKey;
  @param webSocket An instance of `SRWebSocket` that received a message.
  @param string    Received text in a form of UTF-8 `String`.
  */
-- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string;
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string __attribute__((swift_attr("@MainActor")));
 
 /**
  Called when a frame was received from a web socket.
@@ -357,7 +357,7 @@ extern NSString *const SRHTTPResponseErrorKey;
  @param webSocket An instance of `SRWebSocket` that received a message.
  @param data      Received data in a form of `NSData`.
  */
-- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithData:(NSData *)data;
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithData:(NSData *)data __attribute__((swift_attr("@MainActor")));
 
 #pragma mark Status & Connection
 
@@ -366,7 +366,7 @@ extern NSString *const SRHTTPResponseErrorKey;
 
  @param webSocket An instance of `SRWebSocket` that was open.
  */
-- (void)webSocketDidOpen:(SRWebSocket *)webSocket;
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket __attribute__((swift_attr("@MainActor")));
 
 /**
  Called when a given web socket encountered an error.
@@ -374,7 +374,7 @@ extern NSString *const SRHTTPResponseErrorKey;
  @param webSocket An instance of `SRWebSocket` that failed with an error.
  @param error     An instance of `NSError`.
  */
-- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error __attribute__((swift_attr("@MainActor")));
 
 /**
  Called when a given web socket was closed.
@@ -384,7 +384,7 @@ extern NSString *const SRHTTPResponseErrorKey;
  @param reason    Reason in a form of a String that was reported by the server or `nil`.
  @param wasClean  Boolean value indicating whether a socket was closed in a clean state.
  */
-- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(nullable NSString *)reason wasClean:(BOOL)wasClean;
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(nullable NSString *)reason wasClean:(BOOL)wasClean __attribute__((swift_attr("@MainActor")));
 
 /**
  Called on receive of a ping message from the server.
@@ -392,7 +392,7 @@ extern NSString *const SRHTTPResponseErrorKey;
  @param webSocket An instance of `SRWebSocket` that received a ping frame.
  @param data      Payload that was received or `nil` if there was no payload.
  */
-- (void)webSocket:(SRWebSocket *)webSocket didReceivePingWithData:(nullable NSData *)data;
+- (void)webSocket:(SRWebSocket *)webSocket didReceivePingWithData:(nullable NSData *)data __attribute__((swift_attr("@MainActor")));
 
 /**
  Called when a pong data was received in response to ping.
@@ -400,7 +400,7 @@ extern NSString *const SRHTTPResponseErrorKey;
  @param webSocket An instance of `SRWebSocket` that received a pong frame.
  @param pongData  Payload that was received or `nil` if there was no payload.
  */
-- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(nullable NSData *)pongData;
+- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(nullable NSData *)pongData __attribute__((swift_attr("@MainActor")));
 
 /**
  Sent before reporting a text frame to be able to configure if it shuold be convert to a UTF-8 String or passed as `NSData`.
@@ -410,7 +410,7 @@ extern NSString *const SRHTTPResponseErrorKey;
 
  @return `YES` if text frame should be converted to UTF-8 String, otherwise - `NO`. Default: `YES`.
  */
-- (BOOL)webSocketShouldConvertTextFrameToString:(SRWebSocket *)webSocket NS_SWIFT_NAME(webSocketShouldConvertTextFrameToString(_:));
+- (BOOL)webSocketShouldConvertTextFrameToString:(SRWebSocket *)webSocket NS_SWIFT_NAME(webSocketShouldConvertTextFrameToString(_:)) __attribute__((swift_attr("@MainActor")));
 
 @end
 
